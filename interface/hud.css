@@ -159,6 +159,7 @@ svg {
 }
 .driver #fuel-background {
     fill: rgba(255, 255, 255, .1);
+    filter: drop-shadow(0 0 2px rgba(0, 0, 0, .5)) !important;
 }
 .driver #fuel-remaining {
     height: 24px;
