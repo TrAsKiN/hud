@@ -15,7 +15,7 @@ If you want to use it as a standalone, you will need to create two functions and
 - `exports.vehicles:getSpeedLimit()`
   - **return**: a *number* corresponding to the speed limit in km/h
 
-### Event requested
+### Event required
 
 - `vehicle:player:entered`
   - **parameter**: the *vehicle* in which the player has entered
