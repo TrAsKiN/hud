@@ -178,6 +178,9 @@ svg {
     fill: rgba(255, 255, 255, .8);
     filter: none;
 }
+.driver #fuel-off {
+    fill:rgba(255, 20, 60, .8);
+}
 .driver #fuel-background, .driver #fuel-alert, .driver #fuel-off {
     opacity: 0;
 }
@@ -185,7 +188,7 @@ svg {
     opacity: 0;
     left: 73px;
 }
-.driver #fuel-electric path {
+.driver #fuel-electric {
     fill: rgba(255, 255, 255, .8);
 }
 
