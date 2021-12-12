@@ -96,14 +96,14 @@ window.addEventListener('message', (event) => {
 
     if (event.data.maxFuel !== undefined) {
         if (event.data.maxFuel > 0) {
-            change(document.querySelector('.fuel'), 'opacity', 1)
             change(document.querySelector('#fuel-electric'), 'opacity', 0)
             change(document.querySelector('#fuel-alert'), 'opacity', 1)
         } else {
             change(document.querySelector('.fuel-display'), 'removeClass', 'blink')
-            change(document.querySelector('.fuel'), 'opacity', 0)
             change(document.querySelector('#fuel-electric'), 'opacity', 1)
             change(document.querySelector('#fuel-alert'), 'opacity', 0)
+            change(document.querySelector('#fuel-off'), 'opacity', 0)
+            change(document.querySelector('#fuel-background'), 'opacity', 0)
         }
     }
 
