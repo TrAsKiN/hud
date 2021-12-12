@@ -2,6 +2,8 @@
 
 A dashboard with a clean but complete design.
 
+![HUD in game](hud.gif)
+
 ## Requirements
 
 Works with **[vehicles](https://github.com/TrAsKiN/vehicles)** for better performance.
