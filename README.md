@@ -8,19 +8,21 @@ A dashboard with a clean but complete design.
 
 Works with **[vehicles](https://github.com/TrAsKiN/vehicles)** for better performance.
 
-If you want to use it as a standalone, you will need to create two functions and trigger an event.
+If you want to use it as a standalone, you have to register callback functions to activate some features.
 
-### Functions required
+### Registering callback functions
 
-- `exports.vehicles:getSeatbeltStatus()`
-  - **return**: a *boolean* if the seat belt is attached
-- `exports.vehicles:getSpeedLimit()`
-  - **return**: a *number* corresponding to the speed limit in km/h
+```lua
+exports.hud:registerSeatbeltFunction(function ()
+    return seatbelt -- a boolean if the seat belt is attached
+end)
+```
 
-### Event required
-
-- `vehicle:player:entered`
-  - **parameter**: the *vehicle* in which the player has entered
+```lua
+exports.hud:registerSpeedLimitFunction(function ()
+    return speedLimit -- a number corresponding to the speed limit in km/h
+end)
+```
 
 # License
 

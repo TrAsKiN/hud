@@ -17,3 +17,8 @@ ui_page 'interface/hud.html'
 client_scripts {
     'client/hud.lua',
 }
+
+exports {
+    'registerSeatbeltFunction',
+    'registerSpeedLimitFunction',
+}
