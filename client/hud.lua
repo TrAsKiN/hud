@@ -1,11 +1,26 @@
+local vehicles = json.decode(LoadResourceFile(GetCurrentResourceName(), 'data/vehicles.json'))
 local seatbeltCallback = function () return false end
 local speedLimitCallback = function () return 0 end
+
+local function isVehicleElectric(model)
+    for _, vehicle in pairs(vehicles) do
+        if GetHashKey(veh['Id']) == GetDisplayNameFromVehicleModel(model) then
+            for _, flag in ipairs(vehicle.Flags) do
+                if flag == 'FLAG_IS_ELECTRIC' then
+                    return true
+                end
+            end
+        end
+    end
+    return false
+end
 
 AddEventHandler('gameEventTriggered', function (event, data)
     if event == 'CEventNetworkPlayerEnteredVehicle' then
         local player, vehicle = table.unpack(data)
         if player == PlayerId() then
             local vehicleModel = GetEntityModel(vehicle)
+            local isElectric = isVehicleElectric(vehicleModel)
             if not IsThisModelABicycle(vehicleModel) then
                 SendNUIMessage({
                     action = 'open'
@@ -14,6 +29,9 @@ AddEventHandler('gameEventTriggered', function (event, data)
                     local hide = false
                     local maxSpeed = GetVehicleModelEstimatedMaxSpeed(vehicleModel)
                     local maxFuel = GetVehicleHandlingFloat(vehicle, 'CHandlingData', 'fPetrolTankVolume')
+                    if isElectric then
+                        maxFuel = 0
+                    end
                     while true do
                         if not hide and IsPauseMenuActive() then
                             SendNUIMessage({

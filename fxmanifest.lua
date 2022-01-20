@@ -5,6 +5,7 @@ author 'TrAsKiN'
 description 'A dashboard for FiveM'
 
 files {
+    'data/vehicles.json',
     'interface/fonts/oxanium.ttf',
     'interface/hud.css',
     'interface/hud.html',
