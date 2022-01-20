@@ -4,7 +4,7 @@ local speedLimitCallback = function () return 0 end
 
 local function isVehicleElectric(model)
     for _, vehicle in pairs(vehicles) do
-        if GetHashKey(vehicle['Id']) == GetDisplayNameFromVehicleModel(model) then
+        if vehicle['SignedHash'] == model then
             for _, flag in ipairs(vehicle.Flags) do
                 if flag == 'FLAG_IS_ELECTRIC' then
                     return true
