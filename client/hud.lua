@@ -2,19 +2,6 @@ local vehicles = json.decode(LoadResourceFile(GetCurrentResourceName(), 'data/ve
 local seatbeltCallback = function () return false end
 local speedLimitCallback = function () return 0 end
 
-local function isVehicleElectric(model)
-    for _, vehicle in pairs(vehicles) do
-        if GetHashKey(veh['Id']) == GetDisplayNameFromVehicleModel(model) then
-            for _, flag in ipairs(vehicle.Flags) do
-                if flag == 'FLAG_IS_ELECTRIC' then
-                    return true
-                end
-            end
-        end
-    end
-    return false
-end
-
 AddEventHandler('gameEventTriggered', function (event, data)
     if event == 'CEventNetworkPlayerEnteredVehicle' then
         local player, vehicle = table.unpack(data)
@@ -95,4 +82,17 @@ end
 
 function registerSpeedLimitFunction(callback)
     speedLimitCallback = callback
+end
+
+function isVehicleElectric(model)
+    for _, vehicle in pairs(vehicles) do
+        if GetHashKey(veh['Id']) == GetDisplayNameFromVehicleModel(model) then
+            for _, flag in ipairs(vehicle.Flags) do
+                if flag == 'FLAG_IS_ELECTRIC' then
+                    return true
+                end
+            end
+        end
+    end
+    return false
 end
