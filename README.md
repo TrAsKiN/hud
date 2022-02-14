@@ -24,4 +24,4 @@ end)
 
 # License
 
-License under consideration...
+Under MIT license
