@@ -27,7 +27,7 @@ AddEventHandler('gameEventTriggered', function (event, data)
                 })
                 CreateThread(function ()
                     local hide = false
-                    local maxSpeed = GetVehicleModelEstimatedMaxSpeed(vehicleModel) + 5.0
+                    local maxSpeed = GetVehicleModelEstimatedMaxSpeed(vehicleModel) * 1.2
                     local maxFuel = GetVehicleHandlingFloat(vehicle, 'CHandlingData', 'fPetrolTankVolume')
                     if isElectric then
                         maxFuel = 0
