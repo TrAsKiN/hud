@@ -52,6 +52,7 @@ AddEventHandler('gameEventTriggered', function (event, data)
                             return
                         end
                         if GetPedInVehicleSeat(vehicle, -1) == playerPed then
+                            local safeZone = ((1.0 - GetSafeZoneSize()) / 2)
                             local tiresAlert = false
                             for _, wheelId in ipairs({0, 1, 2, 3, 4, 5, 45, 47}) do
                                 if IsVehicleTyreBurst(vehicle, wheelId) then
@@ -72,13 +73,21 @@ AddEventHandler('gameEventTriggered', function (event, data)
                                 fuel = GetVehicleFuelLevel(vehicle) * 100 / maxFuel,
                                 maxFuel = maxFuel,
                                 seatbelt = seatbeltCallback(),
-                                speedLimit = speedLimitCallback()
+                                speedLimit = speedLimitCallback(),
+                                pos = {
+                                    x = safeZone + 0.152,
+                                    y = safeZone
+                                }
                             })
                         else
                             SendNUIMessage({
                                 passenger = true,
                                 doors = GetVehicleDoorLockStatus(vehicle),
-                                seatbelt = seatbeltCallback()
+                                seatbelt = seatbeltCallback(),
+                                pos = {
+                                    x = safeZone + 0.152,
+                                    y = safeZone
+                                }
                             })
                         end
                         Wait(50)

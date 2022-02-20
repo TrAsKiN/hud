@@ -39,6 +39,11 @@ window.addEventListener('message', (event) => {
         change(document.querySelector('#container'), 'opacity', 0)
     }
 
+    if (event.data.pos) {
+        document.querySelector('#container').style.left = event.data.pos.x * 100 + 'vw'
+        document.querySelector('#container').style.bottom = event.data.pos.y * 100 + 'vh'
+    }
+
     if (event.data.passenger) {
         change(document.querySelector('.driver'), 'opacity', 0)
         change(document.querySelector('.passenger'), 'opacity', 1)
