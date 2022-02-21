@@ -51,8 +51,8 @@ AddEventHandler('gameEventTriggered', function (event, data)
                             })
                             return
                         end
+                        local safeZone = ((1.0 - GetSafeZoneSize()) / 2)
                         if GetPedInVehicleSeat(vehicle, -1) == playerPed then
-                            local safeZone = ((1.0 - GetSafeZoneSize()) / 2)
                             local tiresAlert = false
                             for _, wheelId in ipairs({0, 1, 2, 3, 4, 5, 45, 47}) do
                                 if IsVehicleTyreBurst(vehicle, wheelId) then
