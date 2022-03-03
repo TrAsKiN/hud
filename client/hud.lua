@@ -52,6 +52,7 @@ AddEventHandler('gameEventTriggered', function (event, data)
                             return
                         end
                         local safeZone = ((1.0 - GetSafeZoneSize()) / 2)
+                        local offset = IsMinimapRendering() and 0.152 or 0.0
                         if GetPedInVehicleSeat(vehicle, -1) == playerPed then
                             local tiresAlert = false
                             for _, wheelId in ipairs({0, 1, 2, 3, 4, 5, 45, 47}) do
@@ -75,7 +76,7 @@ AddEventHandler('gameEventTriggered', function (event, data)
                                 seatbelt = seatbeltCallback(),
                                 speedLimit = speedLimitCallback(),
                                 pos = {
-                                    x = safeZone + IsMinimapRendering() and 0.152 or 0.0,
+                                    x = safeZone + offset,
                                     y = safeZone
                                 }
                             })
@@ -85,7 +86,7 @@ AddEventHandler('gameEventTriggered', function (event, data)
                                 doors = GetVehicleDoorLockStatus(vehicle),
                                 seatbelt = seatbeltCallback(),
                                 pos = {
-                                    x = safeZone + IsMinimapRendering() and 0.152 or 0.0,
+                                    x = safeZone + offset,
                                     y = safeZone
                                 }
                             })
