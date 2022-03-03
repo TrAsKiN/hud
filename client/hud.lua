@@ -75,7 +75,7 @@ AddEventHandler('gameEventTriggered', function (event, data)
                                 seatbelt = seatbeltCallback(),
                                 speedLimit = speedLimitCallback(),
                                 pos = {
-                                    x = safeZone + 0.152,
+                                    x = safeZone + IsMinimapRendering() and 0.152 or 0.0,
                                     y = safeZone
                                 }
                             })
