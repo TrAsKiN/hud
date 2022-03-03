@@ -85,7 +85,7 @@ AddEventHandler('gameEventTriggered', function (event, data)
                                 doors = GetVehicleDoorLockStatus(vehicle),
                                 seatbelt = seatbeltCallback(),
                                 pos = {
-                                    x = safeZone + 0.152,
+                                    x = safeZone + IsMinimapRendering() and 0.152 or 0.0,
                                     y = safeZone
                                 }
                             })
