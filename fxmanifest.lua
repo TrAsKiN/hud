@@ -4,6 +4,10 @@ game 'gta5'
 author 'TrAsKiN'
 description 'A dashboard for FiveM'
 
+dependencies {
+    '/client:12767',
+}
+
 files {
     'data/vehicles.json',
     'interface/fonts/oxanium.ttf',

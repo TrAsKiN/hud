@@ -1,31 +1,17 @@
-local vehicles = json.decode(LoadResourceFile(GetCurrentResourceName(), 'data/vehicles.json'))
-local seatbeltCallback = function () return false end
-local speedLimitCallback = function () return 0 end
+local seatbeltCallback = function() return false end
+local speedLimitCallback = function() return 0 end
 
-local function isVehicleElectric(model)
-    for _, vehicle in pairs(vehicles) do
-        if vehicle['SignedHash'] == model then
-            for _, flag in ipairs(vehicle.Flags) do
-                if flag == 'FLAG_IS_ELECTRIC' then
-                    return true
-                end
-            end
-        end
-    end
-    return false
-end
-
-AddEventHandler('gameEventTriggered', function (event, data)
+AddEventHandler('gameEventTriggered', function(event, data)
     if event == 'CEventNetworkPlayerEnteredVehicle' then
         local player, vehicle = table.unpack(data)
         if player == PlayerId() then
             local vehicleModel = GetEntityModel(vehicle)
-            local isElectric = isVehicleElectric(vehicleModel)
+            local isElectric = GetVehicleHasFlag(vehicle, 43)
             if not IsThisModelABicycle(vehicleModel) then
                 SendNUIMessage({
                     action = 'open'
                 })
-                CreateThread(function ()
+                CreateThread(function()
                     local hide = false
                     local maxSpeed = GetVehicleModelEstimatedMaxSpeed(vehicleModel) * 1.2
                     local maxFuel = GetVehicleHandlingFloat(vehicle, 'CHandlingData', 'fPetrolTankVolume')
@@ -55,7 +41,7 @@ AddEventHandler('gameEventTriggered', function (event, data)
                         local offset = IsMinimapRendering() and 0.152 or 0.0
                         if GetPedInVehicleSeat(vehicle, -1) == playerPed then
                             local tiresAlert = false
-                            for _, wheelId in ipairs({0, 1, 2, 3, 4, 5, 45, 47}) do
+                            for _, wheelId in ipairs({ 0, 1, 2, 3, 4, 5, 45, 47 }) do
                                 if IsVehicleTyreBurst(vehicle, wheelId) then
                                     tiresAlert = true
                                 end
