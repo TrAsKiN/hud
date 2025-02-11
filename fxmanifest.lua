@@ -4,9 +4,7 @@ game 'gta5'
 author 'TrAsKiN'
 description 'A dashboard for FiveM'
 
-dependencies {
-    '/client:12767',
-}
+dependencies {}
 
 files {
     'data/vehicles.json',
